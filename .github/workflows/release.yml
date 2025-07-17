@@ -1,0 +1,27 @@
+name: release
+
+on:
+  workflow_dispatch:
+    inputs:
+      currentDevelopmentVersion:
+        description: 'The current development version (without SNAPSHOT)'
+        required: true
+
+jobs:
+  perform-release:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create release
+        run: |
+          git tag wanaku-${{ github.event.inputs.currentDevelopmentVersion }}
+          git push origin wanaku-${{ github.event.inputs.currentDevelopmentVersion }}
+          git push origin main
+                    

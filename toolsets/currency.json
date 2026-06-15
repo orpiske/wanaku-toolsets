@@ -13,6 +13,10 @@
         "scope" : "service",
         "value" : "GET"
       },
+      "wanaku_body" : {
+        "type" : "string",
+        "description" : "The amount to convert"
+      },
       "toCurrency" : {
         "type" : "string",
         "description" : "The currency to convert to using the 3 letter currency code"
@@ -22,6 +26,6 @@
         "description" : "The currency to convert from using the 3 letter currency code"
       }
     },
-    "required" : [ "fromCurrency", "toCurrency" ]
+    "required" : [ "fromCurrency", "toCurrency","wanaku_body" ]
   }
 } ]
